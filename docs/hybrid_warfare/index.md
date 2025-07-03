@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 하이브리드전
-nav_order: 2
+nav_order: 3
 has_children: true
 ---
 
