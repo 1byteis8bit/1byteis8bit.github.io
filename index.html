@@ -1,1 +1,94 @@
-<p1>hi</p1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="marryjane — an independent security research lab for reverse engineering, binary exploitation, systems security, and reproducible research.">
+  <meta name="theme-color" content="#0b0d0f">
+  <title>marryjane — Independent Security Research Lab</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="marryjane home"><span>m/</span>marryjane</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary">
+      <a class="active" href="./">Home</a>
+      <a href="labs/">Labs</a>
+      <a href="writing/">Writing</a>
+      <a href="projects/">Projects</a>
+      <a href="about/">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> Independent research archive</div>
+      <h1>Understand software<br><em>below the source.</em></h1>
+      <p class="hero-copy">Reverse engineering, binary exploitation, systems security, and reproducible security research.</p>
+      <div class="actions">
+        <a class="button primary" href="labs/">Explore Labs <span>↗</span></a>
+        <a class="button" href="writing/">Read Writing <span>→</span></a>
+      </div>
+      <div class="hero-index" aria-label="Research focus">
+        <span>Current focus</span>
+        <ul>
+          <li>x86-64</li><li>ELF</li><li>GDB</li><li>Ghidra</li><li>Binary exploitation</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><span class="section-no">01</span><h2>Featured work</h2></div>
+        <a href="labs/">View the archive →</a>
+      </div>
+      <div class="work-list">
+        <a class="work-row" href="labs/mj-rev-001/">
+          <span class="work-id">MJ-REV-001</span>
+          <span class="work-main"><strong>Tracing a Password Checker in GDB</strong><small>Following control flow, registers, and comparison logic in a small x86-64 ELF.</small></span>
+          <span class="tag">reversing</span><time datetime="2026-07-26">2026.07.26</time><span class="arrow">↗</span>
+        </a>
+        <a class="work-row" href="writing/c-to-assembly/">
+          <span class="work-id">MJ-NOTE-001</span>
+          <span class="work-main"><strong>From C to x86-64 Assembly</strong><small>A field note on stack frames, calling conventions, and compiler output.</small></span>
+          <span class="tag">systems</span><time datetime="2026-07-26">2026.07.26</time><span class="arrow">↗</span>
+        </a>
+        <a class="work-row" href="writing/static-vs-dynamic-analysis/">
+          <span class="work-id">MJ-PAPER-001</span>
+          <span class="work-main"><strong>Static Analysis vs Dynamic Analysis</strong><small>Where each method helps, where it fails, and why useful workflows combine both.</small></span>
+          <span class="tag">analysis</span><time datetime="2026-07-26">2026.07.26</time><span class="arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section project-spotlight">
+      <div class="section-heading"><div><span class="section-no">02</span><h2>Active project</h2></div></div>
+      <a class="project-panel" href="projects/30-binary-autopsies/">
+        <div>
+          <span class="status in-progress">In progress</span>
+          <h3>30 Binary Autopsies</h3>
+          <p>Thirty small ELF binaries, examined through repeatable static and dynamic analysis.</p>
+        </div>
+        <div class="progress-block">
+          <div class="progress-label"><strong>01</strong><span>/ 30 complete</span></div>
+          <div class="progress"><i style="width:3.33%"></i></div>
+          <span class="text-link">Open project →</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="statement">
+      <p>I study how software behaves at the <em>binary, memory, and operating-system level</em>—then turn the findings into analysis others can reproduce.</p>
+      <a href="about/">About the lab →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div><a class="wordmark" href="./"><span>m/</span>marryjane</a><p>Independent security research and offensive security lab.</p></div>
+    <div class="footer-links"><a href="https://github.com/1byteis8bit" rel="me">GitHub ↗</a><a href="about/#contact">Contact</a></div>
+    <p class="copyright">© 2026 marryjane · Built for clarity, not theatre.</p>
+  </footer>
+</body>
+</html>

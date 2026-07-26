@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracing a password checker in GDB — MJ-REV-001."><title>MJ-REV-001 — marryjane</title><link rel="stylesheet" href="../../assets/style.css"><script src="../../assets/site.js" defer></script></head>
+<body><header class="site-header"><a class="wordmark" href="../../"><span>m/</span>marryjane</a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav"><a href="../../">Home</a><a class="active" href="../">Labs</a><a href="../../writing/">Writing</a><a href="../../projects/">Projects</a><a href="../../about/">About</a></nav></header>
+<main><header class="article-head"><span class="article-id">MJ-REV-001 / REVERSING</span><h1>Tracing a Password Checker in GDB</h1><p class="deck">A lab template for following user input through an x86-64 ELF and locating the branch that decides success or failure.</p><div class="metadata"><div><span class="meta-label">Status</span><strong>Complete</strong></div><div><span class="meta-label">Difficulty</span><strong>Beginner</strong></div><div><span class="meta-label">Platform</span><strong>Linux / ELF</strong></div><div><span class="meta-label">Architecture</span><strong>x86-64</strong></div><div><span class="meta-label">Published</span><strong>2026-07-26</strong></div></div></header>
+<div class="prose-layout"><aside class="toc"><span>On this page</span><a href="#objective">Objective</a><a href="#environment">Environment</a><a href="#observations">Initial observations</a><a href="#static">Static analysis</a><a href="#dynamic">Dynamic analysis</a><a href="#findings">Key findings</a><a href="#lessons">Lessons</a></aside>
+<article class="prose"><blockquote>Archive note: this first entry demonstrates the lab format. Replace the sample binary details and attach artifacts when the exercise repository is published.</blockquote>
+<h2 id="objective">Objective</h2><p>Determine how a small password-checking program validates input, identify the decisive conditional branch, and record a workflow that can be repeated on similar binaries.</p>
+<h2 id="environment">Environment</h2><pre><code>OS       Ubuntu 24.04
+Format   ELF 64-bit LSB, x86-64
+Tools    file, strings, GDB, pwndbg, Ghidra</code></pre>
+<h2 id="observations">Initial observations</h2><p>Start with low-cost triage: inspect the file type and security properties, run <code>strings</code>, then execute the binary with clearly different inputs. The goal is to form testable hypotheses before opening a disassembler.</p>
+<h2 id="static">Static analysis</h2><p>Locate references to the success and failure strings, then walk backward through their cross-references. In a simple checker this typically leads to a comparison call or loop and the conditional jump controlling the result.</p><pre><code>file ./checker
+strings -a ./checker
+objdump -d -M intel ./checker | less</code></pre>
+<h2 id="dynamic">Dynamic analysis</h2><p>Break before the comparison, provide a known input, and inspect argument registers under the System V AMD64 ABI. Step across the call and observe the return value and flags before the following branch.</p><pre><code>break main
+run
+disassemble /m main
+info registers
+x/s $rdi
+x/s $rsi</code></pre>
+<h2 id="findings">Key findings</h2><p>The useful result is not merely a recovered password. It is the chain of evidence connecting input, comparison arguments, return value, flags, and the branch that selects program output.</p>
+<h2 id="lessons">Lessons learned</h2><ul><li>String cross-references provide fast orientation in small binaries.</li><li>Calling conventions turn register values into meaningful program data.</li><li>Static and dynamic views are most useful when they test each other.</li></ul>
+<h2>Artifacts</h2><p>Source code, binary, GDB transcript, and analysis notes will be linked here after repository publication.</p></article></div></main>
+<footer><div><a class="wordmark" href="../../"><span>m/</span>marryjane</a><p>Independent security research and offensive security lab.</p></div><div class="footer-links"><a href="../">All labs</a><a href="https://github.com/1byteis8bit">GitHub ↗</a></div><p class="copyright">Published 2026-07-26 · Update history begins with repository publication.</p></footer></body></html>
