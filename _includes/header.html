@@ -1,0 +1,11 @@
+<header class="site-header">
+  <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="marryjane home"><span>m/</span>marryjane</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav id="site-nav" aria-label="Primary">
+    <a{% if page.nav == 'home' %} class="active"{% endif %} href="{{ '/' | relative_url }}">Home</a>
+    <a{% if page.nav == 'labs' %} class="active"{% endif %} href="{{ '/labs/' | relative_url }}">Labs</a>
+    <a{% if page.nav == 'writing' %} class="active"{% endif %} href="{{ '/writing/' | relative_url }}">Writing</a>
+    <a{% if page.nav == 'projects' %} class="active"{% endif %} href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a{% if page.nav == 'about' %} class="active"{% endif %} href="{{ '/about/' | relative_url }}">About</a>
+  </nav>
+</header>

@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<header class="page-head">
+  <span class="eyebrow">Archive / {{ page.title }}</span>
+  <h1>{{ page.heading }}</h1>
+  <p>{{ page.description }}</p>
+</header>
+<input class="search" type="search" placeholder="Search IDs, titles, tags…" aria-label="Search {{ page.title }}">
+<div class="filter-bar">
+  <button class="filter active" data-filter="all">All</button>
+  {% for item in site[page.collection_name] %}
+    {% if item.category %}<button class="filter" data-filter="{{ item.category | slugify }}">{{ item.category }}</button>{% endif %}
+  {% endfor %}
+</div>
+<section class="archive-grid">
+  {% assign items = site[page.collection_name] | sort: "date" | reverse %}
+  {% for item in items %}
+  <a class="archive-card" data-category="{{ item.category | slugify }}" href="{{ item.url | relative_url }}">
+    <div class="top">
+      <span class="article-id">{{ item.artifact_id | default: item.collection | upcase }}</span>
+      <span class="status {{ item.status | slugify }}">{{ item.status | default: "Draft" }}</span>
+    </div>
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.description }}</p>
+    <div class="bottom">{% for tag in item.tags limit:3 %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+  </a>
+  {% else %}
+  <div class="empty-note">No public {{ page.title | downcase }} yet. Add a Markdown file to <code>_{{ page.collection_name }}/</code> to publish the first entry.</div>
+  {% endfor %}
+</section>

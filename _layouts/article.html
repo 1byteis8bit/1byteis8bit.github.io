@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<header class="article-head">
+  <span class="article-id">{{ page.artifact_id | default: page.collection | upcase }}{% if page.category %} / {{ page.category | upcase }}{% endif %}</span>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="deck">{{ page.description }}</p>{% endif %}
+  <div class="metadata">
+    <div><span class="meta-label">Status</span><strong>{{ page.status | default: "Draft" }}</strong></div>
+    {% if page.difficulty %}<div><span class="meta-label">Difficulty</span><strong>{{ page.difficulty }}</strong></div>{% endif %}
+    {% if page.platform %}<div><span class="meta-label">Platform</span><strong>{{ page.platform }}</strong></div>{% endif %}
+    {% if page.architecture %}<div><span class="meta-label">Architecture</span><strong>{{ page.architecture }}</strong></div>{% endif %}
+    <div><span class="meta-label">Published</span><strong>{{ page.date | date: "%Y-%m-%d" }}</strong></div>
+    {% if page.updated %}<div><span class="meta-label">Updated</span><strong>{{ page.updated | date: "%Y-%m-%d" }}</strong></div>{% endif %}
+  </div>
+</header>
+<div class="prose-layout single">
+  <article class="prose">
+    {{ content }}
+    {% if page.tags.size > 0 %}
+    <div class="article-tags">
+      {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </article>
+</div>

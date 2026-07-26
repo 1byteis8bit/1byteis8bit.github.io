@@ -1,0 +1,43 @@
+title: marryjane
+description: Independent security research and offensive security lab.
+url: https://marryjane.github.io
+baseurl: ""
+timezone: UTC
+permalink: pretty
+
+collections:
+  labs:
+    output: true
+    permalink: /labs/:name/
+  writing:
+    output: true
+    permalink: /writing/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: labs
+    values:
+      layout: article
+      section: Labs
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: article
+      section: Writing
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: article
+      section: Projects
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - templates

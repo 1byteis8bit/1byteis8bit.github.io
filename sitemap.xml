@@ -1,12 +1,13 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://marryjane.github.io/</loc></url>
-  <url><loc>https://marryjane.github.io/labs/</loc></url>
-  <url><loc>https://marryjane.github.io/labs/mj-rev-001/</loc></url>
-  <url><loc>https://marryjane.github.io/writing/</loc></url>
-  <url><loc>https://marryjane.github.io/writing/c-to-assembly/</loc></url>
-  <url><loc>https://marryjane.github.io/writing/static-vs-dynamic-analysis/</loc></url>
-  <url><loc>https://marryjane.github.io/projects/</loc></url>
-  <url><loc>https://marryjane.github.io/projects/30-binary-autopsies/</loc></url>
-  <url><loc>https://marryjane.github.io/about/</loc></url>
+{% assign pages = site.pages | where_exp: "item", "item.sitemap != false" %}
+{% for item in pages %}
+  {% if item.url and item.url != "/404.html" %}<url><loc>{{ item.url | absolute_url }}</loc></url>{% endif %}
+{% endfor %}
+{% for item in site.labs %}<url><loc>{{ item.url | absolute_url }}</loc><lastmod>{{ item.updated | default: item.date | date_to_xmlschema }}</lastmod></url>{% endfor %}
+{% for item in site.writing %}<url><loc>{{ item.url | absolute_url }}</loc><lastmod>{{ item.updated | default: item.date | date_to_xmlschema }}</lastmod></url>{% endfor %}
+{% for item in site.projects %}<url><loc>{{ item.url | absolute_url }}</loc><lastmod>{{ item.updated | default: item.date | date_to_xmlschema }}</lastmod></url>{% endfor %}
 </urlset>
