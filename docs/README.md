@@ -12,7 +12,7 @@
 ## GitHub Pages
 
 계정명과 일치하는 `<username>.github.io` 저장소를 사용합니다.
-Settings → Pages → Deploy from a branch → 게시 브랜치의 `/ (root)`를 선택합니다.
+Settings → Pages → Deploy from a branch → 게시 브랜치의 `/docs`를 선택합니다.
 `.nojekyll`을 포함하므로 별도의 Jekyll 빌드 설정은 필요하지 않습니다.
 
 ## Template & license
