@@ -28,6 +28,7 @@ h3 { font-size: 15px; font-weight: 650; line-height: 1.65; letter-spacing: -.025
 .award-list li:last-child { border: 0; padding-bottom: 0; }
 .year { font-size: 12px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
 .award-list p { color: var(--accent); font-size: 13px; margin-top: 3px; }
+.award-list .paper-title { color: var(--muted); font-size: 12px; margin-top: 5px; }
 article + article { margin-top: 30px; padding-top: 27px; border-top: 1px solid var(--line); }
 .meta { font-size: 11px; letter-spacing: .025em; color: var(--muted); margin-bottom: 7px; font-variant-numeric: tabular-nums; }
 .subtitle { margin: 3px 0 12px; font-size: 13px; color: var(--accent); }
