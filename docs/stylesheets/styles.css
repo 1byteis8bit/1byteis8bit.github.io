@@ -1,0 +1,74 @@
+﻿/* Adapted from orderedlist/minimal by Steve Smith. CC BY-SA 3.0. */
+:root { color-scheme: light; --ink: #202622; --muted: #656e68; --line: #e6eae6; --accent: #2e6348; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 30px; }
+body { margin: 0; padding: 80px 36px 36px; background: #fff; color: var(--ink); font: 15px/1.85 -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif; word-break: keep-all; overflow-wrap: break-word; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; text-underline-offset: 4px; }
+a:hover { color: var(--accent); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
+.wrapper { width: 960px; max-width: 100%; margin: 0 auto; display: grid; grid-template-columns: 265px minmax(0, 1fr); gap: 95px; align-items: start; }
+header { position: sticky; top: 65px; }
+p, h1, h2, h3 { margin: 0; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .2em; color: var(--muted); margin-bottom: 18px; }
+h1 { font-size: 39px; letter-spacing: -.055em; line-height: 1.2; font-weight: 650; }
+.dot { color: var(--accent); }
+.role { margin-top: 13px; font-size: 14px; color: var(--accent); }
+.intro { margin: 28px 0 20px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+.github { display: inline-flex; gap: 30px; font-size: 13px; border-bottom: 1px solid var(--line); padding: 6px 0; }
+nav { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; margin-top: 48px; }
+nav a { font-size: 13px; color: var(--muted); padding: 5px 0; }
+section { margin-bottom: 52px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 13px; border-bottom: 1px solid var(--ink); margin-bottom: 24px; }
+h2 { font-size: 18px; font-weight: 650; letter-spacing: -.04em; }
+.section-heading > span { color: var(--muted); font: 11px/1.5 monospace; }
+h3 { font-size: 15px; font-weight: 650; line-height: 1.65; letter-spacing: -.025em; }
+.award-list { padding: 0; margin: 0; list-style: none; }
+.award-list li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.award-list li:first-child { padding-top: 0; }
+.award-list li:last-child { border: 0; padding-bottom: 0; }
+.year { font-size: 12px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.award-list p { color: var(--accent); font-size: 13px; margin-top: 3px; }
+article + article { margin-top: 30px; padding-top: 27px; border-top: 1px solid var(--line); }
+.meta { font-size: 11px; letter-spacing: .025em; color: var(--muted); margin-bottom: 7px; font-variant-numeric: tabular-nums; }
+.subtitle { margin: 3px 0 12px; font-size: 13px; color: var(--accent); }
+article > p:not([class]) { font-size: 14px; color: #505953; line-height: 1.9; }
+.detail-list { padding-left: 18px; margin: 16px 0; font-size: 13px; color: #505953; }
+.detail-list li + li { margin-top: 5px; }
+.tags { font-size: 11px; color: var(--muted); margin-top: 17px; }
+.skills { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px 16px; margin: 0; font-size: 13px; }
+.skills dt { color: var(--muted); }
+.skills dd { margin: 0; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 10px; display: flex; flex-direction: column; gap: 4px; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 2; background: white; padding: 8px 14px; }
+.skip-link:focus { top: 10px; }
+@media (max-width: 800px) {
+  body { padding: 40px 25px 25px; }
+  .wrapper { max-width: 600px; display: block; }
+  header { position: static; margin-bottom: 38px; }
+  h1 { font-size: 36px; }
+  .intro { margin: 20px 0 13px; }
+  .intro br { display: none; }
+  nav { flex-direction: row; flex-wrap: wrap; gap: 12px 24px; margin-top: 25px; padding-top: 14px; border-top: 1px solid var(--line); }
+  section { margin-bottom: 40px; }
+}
+@media (max-width: 380px) {
+  body { padding: 30px 20px 20px; }
+  .award-list li { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+  .skills { grid-template-columns: 70px minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  @page { size: A4; margin: 15mm; }
+  body { padding: 0; font-size: 10pt; }
+  .wrapper { display: grid; width: 100%; grid-template-columns: 180px minmax(0, 1fr); gap: 28px; }
+  header { position: static; }
+  h1 { font-size: 28px; }
+  nav, .skip-link { display: none; }
+  section { margin-bottom: 22px; }
+  .section-heading { margin-bottom: 12px; }
+  .award-list li { padding: 8px 0; }
+  article, .award-list li { break-inside: avoid; }
+  article > p:not([class]) { font-size: 11px; }
+  .detail-list, .skills { font-size: 10px; }
+  article + article { margin-top: 16px; padding-top: 16px; }
+}
